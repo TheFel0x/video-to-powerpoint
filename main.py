@@ -51,8 +51,5 @@ def main():
     ppp.save(os.path.join(output_dir,'output.pptx'))
     print('done. saved at:\n'+os.path.join(output_dir,'output.pptx'))
 
-
-
-
 if __name__ == '__main__':
     main()
