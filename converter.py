@@ -17,13 +17,17 @@ imagelist.sort()
 
 for f in imagelist:
     print(f) # should add percentage
-    Second_Layout = X.slide_layouts[5]
-    second_slide = X.slides.add_slide(Second_Layout)
-    second_slide.shapes.title.text = "testing!!!"
-    textbox = second_slide.shapes.add_textbox(Inches(3), Inches(1.5),Inches(3), Inches(1))
-    textframe = textbox.text_frame
-    paragraph = textframe.add_paragraph()
-    paragraph.text = "testestestestetetetettttttt-"
+    layout = X.slide_layouts[5]
+    newslide = X.slides.add_slide(layout)
+    newslide.shapes.title.text = f
+    # textbox = second_slide.shapes.add_textbox(Inches(3), Inches(1.5),Inches(3), Inches(1))
+    # textframe = textbox.text_frame
+    # paragraph = textframe.add_paragraph()
+    # paragraph.text = f    
+    #add pic
+    # TODO: calculate width / height depending on which one is greater with image dimensions
+    pic = newslide.shapes.add_picture("./cache/"+f, 0, 0,width=Inches(9), height=Inches(5))
+
 
 # TODO:
 #   - add images
