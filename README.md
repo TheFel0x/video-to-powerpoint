@@ -1,6 +1,7 @@
 # Convert a video to pptx PowerPoint file
 
-TODO:
+
+### TODO:
 - take arguments / input
 - fix size
 - better temp files
@@ -9,3 +10,8 @@ TODO:
 ### Required pip packages:
 - `opencv-python`
 - `python-pptx`
+
+
+### Works on:
+- [ ] ~~Windows~~
+- [X] Linux
