@@ -1,21 +1,18 @@
 import os
 import cv2 # opencv-python
+import tempfile
 from pptx import Presentation # python-pptx
 from pptx.util import Inches
 
 def main():
     # TODO: take args
     input_file = input('Input file location: ')
-    cache_dir = input('Cache folder location: ')      # TODO: use actual temp directory, dont ask for input
     output_dir = input('Export directory: ')        
     output_name = input('Output file name (.pptx): ')
     
-    # Clear cache
-    print('# clearing cache')
-    cached_files = os.listdir(cache_dir)
-    for file in cached_files:
-        os.remove(os.path.join(cache_dir,file))
-        print(os.path.join(cache_dir,file)+" deleted")
+    # create temp dir
+    temp = tempfile.TemporaryDirectory()
+    cache_dir = temp.name
 
     # Extract frames from video
     # TODO: option to lower resolution
@@ -34,6 +31,7 @@ def main():
     # Create PowerPoint
     print('# creating ppp')
     ppp = Presentation()
+    layout = ppp.slide_layouts[0]
     
     # Add frames
     frames = os.listdir(cache_dir)
@@ -48,7 +46,8 @@ def main():
     ppp.save(os.path.join(output_dir,output_name))
     print('done. saved at:\n'+os.path.join(output_dir,output_name))
 
-    # TODO: clear cache folder
+    # delete temp dir
+    temp.cleanup()
 
 if __name__ == '__main__':
     main()
