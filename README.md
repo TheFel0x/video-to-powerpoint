@@ -4,7 +4,6 @@
 ### TODO:
 - take arguments / input
 - fix size
-- better temp files
 
 
 ### Required pip packages:
