@@ -5,9 +5,10 @@ from pptx.util import Inches
 
 def main():
     # TODO: take args
-    input_file = './test.mp4'   # TODO: make it cross-platform / windows-friendly
-    cache_dir = './cache'      # TODO: use actual temp directory
-    output_dir = './export'    # TODO: don't do this
+    input_file = input('Input file location: ')
+    cache_dir = input('Cache folder location: ')      # TODO: use actual temp directory, dont ask for input
+    output_dir = input('Export directory: ')        
+    output_name = input('Output file name (.pptx): ')
     
     # Clear cache
     print('# clearing cache')
@@ -33,11 +34,7 @@ def main():
     # Create PowerPoint
     print('# creating ppp')
     ppp = Presentation()
-    layout = ppp.slide_layouts[0] 
-    slide = ppp.slides.add_slide(layout)
-    slide.shapes.title.text = 'It works!'
-    slide.placeholders[1].text = 'https://github.com/thefel0x'
-
+    
     # Add frames
     frames = os.listdir(cache_dir)
     frames.sort()
@@ -47,9 +44,11 @@ def main():
         slide = ppp.slides.add_slide(layout)
         slide.shapes.title.text = f
         # TODO: dimension calculations
-        pic = slide.shapes.add_picture("./cache/"+f, 0, 0,width=Inches(9), height=Inches(5))
-    ppp.save(os.path.join(output_dir,'output.pptx'))
-    print('done. saved at:\n'+os.path.join(output_dir,'output.pptx'))
+        pic = slide.shapes.add_picture(os.path.join(cache_dir,f), 0, 0,width=Inches(9), height=Inches(5))
+    ppp.save(os.path.join(output_dir,output_name))
+    print('done. saved at:\n'+os.path.join(output_dir,output_name))
+
+    # TODO: clear cache folder
 
 if __name__ == '__main__':
     main()
