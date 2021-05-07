@@ -13,5 +13,5 @@
 
 
 ### Works on:
-- [ ] ~~Windows~~
+- [X] Windows
 - [X] Linux
