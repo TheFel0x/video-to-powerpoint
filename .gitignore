@@ -136,8 +136,3 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-
-# custon :)
-test.mp4
-cache/*
-export/*
